@@ -3,6 +3,13 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+# sqlite db and data folder
+*.db
+/data/
+
+# dockerignore files
+.dockerignore
+
 # github files
 .github
 
