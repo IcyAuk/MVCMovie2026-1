@@ -5,3 +5,4 @@ obj/
 .git/
 .env
 node_modules/
+test.cs

@@ -25,9 +25,19 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-
-    SeedData.Initialize(services);
-}
+    try
+    {
+        var context = services.GetRequiredService<MvcMovie.Data.MvcMovieContext>();
+        context.Database.Migrate();
+        SeedData.Initialize(services);
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Migration Error");
+        throw;
+    }
+    }
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

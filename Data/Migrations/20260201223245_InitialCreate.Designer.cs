@@ -8,10 +8,10 @@ using MvcMovie.Data;
 
 #nullable disable
 
-namespace MVCMovie2026_1.Migrations
+namespace MVCMovie2026_1.Data.Migrations
 {
     [DbContext(typeof(MvcMovieContext))]
-    [Migration("20260127141638_InitialCreate")]
+    [Migration("20260201223245_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -27,18 +27,22 @@ namespace MVCMovie2026_1.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Genre")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 2)");
 
                     b.Property<string>("Rating")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(60)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

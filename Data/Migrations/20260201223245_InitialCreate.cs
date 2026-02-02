@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MVCMovie2026_1.Migrations
+namespace MVCMovie2026_1.Data.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
@@ -17,11 +16,11 @@ namespace MVCMovie2026_1.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Title = table.Column<string>(type: "TEXT", nullable: true),
-                    ReleaseDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Genre = table.Column<string>(type: "TEXT", nullable: true),
+                    Genre = table.Column<string>(type: "TEXT", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
-                    Rating = table.Column<string>(type: "TEXT", nullable: true)
+                    Rating = table.Column<string>(type: "TEXT", nullable: false),
+                    ReleaseDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Title = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false)
                 },
                 constraints: table =>
                 {
